@@ -11,8 +11,7 @@ public class Mover : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private float _currentSpeed;            
-    private bool isLanded;
-    private float _damageForce = 200;
+    private bool isLanded;    
 
     public bool IsLanded => isLanded;
 
