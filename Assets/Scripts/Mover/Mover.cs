@@ -53,11 +53,6 @@ public class Mover : MonoBehaviour
         isLanded = true;
     }
 
-    public void OnDamaged()
-    {
-       // AddForceDirection(transform.up, _damageForce);
-    }
-
     public void Disabled()
     {
         this.enabled = false;
