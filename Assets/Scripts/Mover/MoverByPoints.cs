@@ -8,6 +8,7 @@ public class MoverByPoints : Mover
     [SerializeField] private IntEvent _changedDirection;
 
     private CheckPoint _currentPoint;
+    private Transform _player;
 
     private void Start()
     {
@@ -16,8 +17,21 @@ public class MoverByPoints : Mover
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out CheckPoint checkPoint) && checkPoint == _currentPoint)
+        if (_player == null && collision.gameObject.TryGetComponent(out CheckPoint checkPoint) && checkPoint == _currentPoint)
             SetDirection(); 
+    }
+    
+    public void OnFoundPlayer(Transform player)
+    {
+        _player = player;
+
+        if (_player == null)
+            SetDirection();
+    }
+
+    public void OnKilledEnemy()
+    {
+        OnFoundPlayer(null);
     }
 
     private void SetDirection()

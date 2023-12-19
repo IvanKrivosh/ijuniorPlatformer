@@ -28,12 +28,6 @@ public class SpawenPoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<PlayerMover>(out PlayerMover player))
-            Destroy(_currntObject);
-    }
-
     private void SpawnObject()
     {
         _currntObject = Instantiate(_spawnObject, transform);

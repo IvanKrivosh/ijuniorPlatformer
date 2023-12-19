@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -13,6 +12,7 @@ public class Mover : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private float _currentSpeed;            
     private bool isLanded;
+    private float _damageForce = 200;
 
     public bool IsLanded => isLanded;
 
@@ -51,6 +51,16 @@ public class Mover : MonoBehaviour
     public void OnLanded()
     {
         isLanded = true;
+    }
+
+    public void OnDamaged()
+    {
+       // AddForceDirection(transform.up, _damageForce);
+    }
+
+    public void Disabled()
+    {
+        this.enabled = false;
     }
 
     protected void AddForceDirection(Vector3 direction, float force)

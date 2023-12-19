@@ -80,5 +80,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d49efb493c2e4ba346ecb670866d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnObject: {fileID: 0}
+  _spawnObject: {fileID: 6953566342988660064, guid: 5e50dc4fead3c894ca8b707c3e669ba2, type: 3}
   _spawnTime: 10

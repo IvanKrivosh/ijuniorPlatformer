@@ -7,12 +7,14 @@ public class KeyPressHandler : MonoBehaviour
 {
     private const string Horizontal = "Horizontal";
     private const KeyCode SpaceCode = KeyCode.Space;
+    private const KeyCode AttackCode = KeyCode.E;
     private const int RightDirection = 1;
     private const int LeftDirection = -1;
     private const int MiddleDirection = 0;
 
     [SerializeField] private IntEvent _pressedHorizontalAxis;
     [SerializeField] private UnityEvent _pressedSpace;
+    [SerializeField] private UnityEvent _pressedAttack;
 
     private int _direction = 0;
     private float _currentHorizontalValue = 0f;    
@@ -37,6 +39,8 @@ public class KeyPressHandler : MonoBehaviour
         }
 
         if (Input.GetKeyDown(SpaceCode))        
-            _pressedSpace.Invoke();        
+            _pressedSpace.Invoke();
+        else if (Input.GetKeyDown(AttackCode))
+            _pressedAttack.Invoke();
     }
 }

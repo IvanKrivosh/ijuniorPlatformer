@@ -6,6 +6,8 @@ public class CharacterAnimator : MonoBehaviour
     private const string IsWalking = "IsWalking";
     private const string Direction = "Direction";
     private const string Landed = "IsLanded";
+    private const string IsAttacking = "IsAttacking";
+    private const string IsDestroyed = "IsDestroyed";
     private const float MiddleDirection = 0f;
 
     private Animator _animator;
@@ -16,7 +18,7 @@ public class CharacterAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void OnMoved(int direction)
+    public void OnChanchedDirection(int direction)
     {
         Vector2 vectorDirection = new Vector2(direction, 0).normalized;
 
@@ -35,6 +37,16 @@ public class CharacterAnimator : MonoBehaviour
     public void OnLanded()
     {
         SetLanded();
+    }
+
+    public void OnAttacked()
+    {
+        _animator.SetTrigger(IsAttacking);
+    }
+
+    public void OnDestroyed()
+    {
+        _animator.SetBool(IsDestroyed, true);
     }
 
     private void SetLanded(bool isLanded = true)
