@@ -36,7 +36,7 @@ public class Attacker : MonoBehaviour
     public void OnAttacked()
     {
         if (_focusedCharacter != null)
-            _focusedCharacter.GetComponent<Character>().SetDamage(this);
+            _focusedCharacter.TakeDamage(this);
     }
 
     public void OnChanchedDirection(int direction)

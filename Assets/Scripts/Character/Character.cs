@@ -11,14 +11,13 @@ public class Character : MonoBehaviour
     [SerializeField] private float _lookDistance = 5f;
     [SerializeField] private ContactFilter2D _filter;
     [SerializeField] private TransformEvent _foundEnemy;
-    [SerializeField] private UnityEvent _died;
 
     private int _direction = 0;
     private Rigidbody2D _rigidbody;
     private RaycastHit2D[] _collisionResult = new RaycastHit2D[1];
     private Character _enemy;
 
-    public UnityEvent Died => _died;    
+    public UnityEvent Died;
 
     public bool IsAlive => _health > 0;
 
@@ -59,14 +58,14 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void SetDamage(Attacker enemy)
+    public void TakeDamage(Attacker enemy)
     {
         if (_health <= 0) return;
 
         _health -= enemy.Damage;
 
         if (_health <= 0)        
-            _died.Invoke();                  
+            Died.Invoke();                  
     }
 
     public void OnChangedDirection(int direction)

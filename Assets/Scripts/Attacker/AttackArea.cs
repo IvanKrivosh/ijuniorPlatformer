@@ -13,14 +13,14 @@ public class AttackArea : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Character>(out Character character) 
-            && character.GetType().Name == _characterEnemy.GetType().Name && character.IsAlive)
+            && character.IsAlive && character.GetType() == _characterEnemy.GetType())
            CollidedEnemy.Invoke(character);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Character>(out Character character) 
-            && character.GetType().Name == _characterEnemy.GetType().Name)
+            && character.GetType() == _characterEnemy.GetType())
             CollidedEnemy.Invoke(null);
     }
 

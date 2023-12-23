@@ -402,7 +402,7 @@ MonoBehaviour:
   _foundEnemy:
     m_PersistentCalls:
       m_Calls: []
-  _died:
+  Died:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1001570255491794337}
@@ -420,18 +420,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1989161701842497612}
         m_TargetAssemblyTypeName: CharacterAnimator, Assembly-CSharp
         m_MethodName: OnDestroyed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8989730514136324406}
-        m_TargetAssemblyTypeName: Attacker, Assembly-CSharp
-        m_MethodName: Disabled
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
