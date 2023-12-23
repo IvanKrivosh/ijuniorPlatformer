@@ -8,7 +8,7 @@ public class SpawenPoint : MonoBehaviour
     [SerializeField] private float _spawnTime = 10.0f;
     [SerializeField] private float _spawnDelay = 5f;
 
-    private Elexir _currntObject;
+    private Elexir _elexir;
 
     private void Start()
     {
@@ -17,13 +17,13 @@ public class SpawenPoint : MonoBehaviour
 
     private void SpawnObject()
     {
-        _currntObject = Instantiate(_spawnObject, transform);
-        _currntObject.Destroyed.AddListener(OnDestroyedElexir);
+        _elexir = Instantiate(_spawnObject, transform);
+        _elexir.Destroyed.AddListener(OnDestroyedElexir);
     }
 
     private void OnDestroyedElexir()
     {
-        _currntObject.Destroyed.RemoveListener(OnDestroyedElexir);
+        _elexir.Destroyed.RemoveListener(OnDestroyedElexir);
 
         if (enabled)
             Invoke(nameof(SpawnObject), _spawnDelay);
