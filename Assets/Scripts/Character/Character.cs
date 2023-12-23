@@ -29,20 +29,20 @@ public class Character : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 lookDirection;
-        int collisionCound;
+        int collisionCount;
 
         if (_direction == 0) return;
 
         lookDirection = transform.right * _direction;
-        collisionCound = _rigidbody.Cast(lookDirection, _filter, _collisionResult, _lookDistance);
+        collisionCount = _rigidbody.Cast(lookDirection, _filter, _collisionResult, _lookDistance);
 
-        if (collisionCound > 0 && _enemy == null 
+        if (collisionCount > 0 && _enemy == null 
             && _collisionResult[0].transform.TryGetComponent<Character>(out Character character) && character.IsAlive)
         {
             _enemy = character;
             _foundEnemy.Invoke(_enemy.transform);
         }
-        else if (collisionCound ==  0 && _enemy != null)
+        else if (collisionCount ==  0 && _enemy != null)
         {
             _enemy = null;
             _foundEnemy.Invoke(null);
