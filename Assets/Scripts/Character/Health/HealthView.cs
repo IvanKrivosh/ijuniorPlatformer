@@ -8,7 +8,7 @@ public class HealthView : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     [SerializeField] private Slider _slider;
     [SerializeField] private Slider _smoothSlider;
-    [SerializeField] float _smoothStep = 0.01f;
+    [SerializeField] private float _smoothStep = 0.01f;
 
     private float _currentValue;
     private IEnumerator _smoothCoroutine;

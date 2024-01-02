@@ -60,6 +60,12 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        _healht.Died -= OnDied;
+        _healht.ChandedHealth -= OnChangedHealth;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Elexir>(out Elexir elexir))
@@ -92,11 +98,5 @@ public class Character : MonoBehaviour
     private void OnDied()
     {
         Died.Invoke();
-    }
-
-    private void OnDestroy()
-    {
-        _healht.Died -= OnDied;
-        _healht.ChandedHealth -= OnChangedHealth;
-    }
+    }    
 }

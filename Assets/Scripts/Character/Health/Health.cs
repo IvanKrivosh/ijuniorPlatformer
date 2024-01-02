@@ -20,11 +20,11 @@ public class Health
 
     public void TakeDamage(int damage)
     {
-        int negative—oefficient = -1;
+        int negativeCoefficient = -1;
 
         if (!IsAlive) return;                
 
-        ChangeHealth(damage * negative—oefficient);
+        ChangeHealth(damage * negativeCoefficient);
     }
 
     public void TakeHealing(int healing)
