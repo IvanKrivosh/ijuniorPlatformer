@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
     [Range(10, 100)]
-    [SerializeField] private int _health = 10;    
+    [SerializeField] private int _healthValue = 10;    
     [Range(1f, 10f)]
     [SerializeField] private float _lookDistance = 5f;
     [SerializeField] private ContactFilter2D _filter;
@@ -16,14 +16,25 @@ public class Character : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private RaycastHit2D[] _collisionResult = new RaycastHit2D[1];
     private Character _enemy;
+    private Health _healht;
 
     public UnityEvent Died;
+    public TwoParamIntEvent ChangedHealth;
 
-    public bool IsAlive => _health > 0;
+    public bool IsAlive => _healht.IsAlive;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _healht = new Health(_healthValue);
+
+        _healht.Died += OnDied;
+        _healht.ChandedHealth += OnChangedHealth;        
+    }
+
+    private void Start()
+    {
+        OnChangedHealth();
     }
 
     private void FixedUpdate()
@@ -53,23 +64,39 @@ public class Character : MonoBehaviour
     {
         if (collision.TryGetComponent<Elexir>(out Elexir elexir))
         {
-            _health += elexir.Health;
+            _healht.TakeHealing(elexir.Health);
             Destroy(elexir.gameObject);
         }
     }
 
-    public void TakeDamage(Attacker enemy)
+    public void TakeDamage(int damage)
     {
-        if (_health <= 0) return;
+        _healht.TakeDamage(damage);
+    }
 
-        _health -= enemy.Damage;
-
-        if (_health <= 0)        
-            Died.Invoke();                  
+    public void TakeHealing(int healing)
+    {
+        _healht.TakeHealing(healing);
     }
 
     public void OnChangedDirection(int direction)
     {
         _direction = direction;
+    }
+
+    private void OnChangedHealth()
+    {
+        ChangedHealth.Invoke(_healht.MaxValue, _healht.Value);
+    }
+
+    private void OnDied()
+    {
+        Died.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        _healht.Died -= OnDied;
+        _healht.ChandedHealth -= OnChangedHealth;
     }
 }

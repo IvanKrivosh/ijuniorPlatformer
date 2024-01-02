@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b822a35f8b61aa64c8ca264bbc75dd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _healthValue: 100
   _lookDistance: 10
   _filter:
     useTriggers: 0
@@ -429,6 +429,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ChangedHelath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &887905950635588035
 PrefabInstance:
   m_ObjectHideFlags: 0

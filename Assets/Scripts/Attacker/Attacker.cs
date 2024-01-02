@@ -1,7 +1,5 @@
-using GameEvent;
 using System;
 using System.Collections;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,7 +34,7 @@ public class Attacker : MonoBehaviour
     public void OnAttacked()
     {
         if (_focusedCharacter != null)
-            _focusedCharacter.TakeDamage(this);
+            _focusedCharacter.TakeDamage(this.Damage);
     }
 
     public void OnChanchedDirection(int direction)
