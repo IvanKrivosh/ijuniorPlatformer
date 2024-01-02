@@ -32,6 +32,12 @@ public class Character : MonoBehaviour
         _healht.ChandedHealth += OnChangedHealth;        
     }
 
+    private void OnDestroy()
+    {
+        _healht.Died -= OnDied;
+        _healht.ChandedHealth -= OnChangedHealth;
+    }
+
     private void Start()
     {
         OnChangedHealth();
@@ -58,13 +64,7 @@ public class Character : MonoBehaviour
             _enemy = null;
             _foundEnemy.Invoke(null);
         }
-    }
-
-    private void OnDestroy()
-    {
-        _healht.Died -= OnDied;
-        _healht.ChandedHealth -= OnChangedHealth;
-    }
+    }    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
