@@ -5,8 +5,7 @@ using System.Collections;
 
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _text;
-    [SerializeField] private Slider _slider;
+    [SerializeField] private TMP_Text _text;    
     [SerializeField] private Slider _smoothSlider;
     [SerializeField] private float _smoothStep = 0.01f;
 
@@ -16,8 +15,7 @@ public class HealthView : MonoBehaviour
     public void OnHealthChanged(int maxValue, int currentValue)
     {
         _text.text = $"{currentValue}/{maxValue}";
-        _currentValue = (float)currentValue / (float)maxValue;
-        _slider.value = _currentValue;
+        _currentValue = (float)currentValue / (float)maxValue;        
 
         if (_smoothCoroutine == null)
         {
