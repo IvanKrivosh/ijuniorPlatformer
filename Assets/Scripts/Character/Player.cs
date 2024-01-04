@@ -1,3 +1,3 @@
-﻿internal class Player : Character
-{
+﻿public class Player : Character
+{    
 }

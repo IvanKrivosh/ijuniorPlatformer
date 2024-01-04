@@ -22,6 +22,8 @@ public class Character : MonoBehaviour
     public TwoParamIntEvent ChangedHealth;
 
     public bool IsAlive => _healht.IsAlive;
+    public bool HasFullHealth => _healht.Value == _healht.MaxValue;
+    public int HealthValue => _healht.Value;
 
     private void Awake()
     {

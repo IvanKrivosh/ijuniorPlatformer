@@ -8,6 +8,7 @@ public class KeyPressHandler : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const KeyCode SpaceCode = KeyCode.Space;
     private const KeyCode AttackCode = KeyCode.E;
+    private const KeyCode AbilityCode = KeyCode.Q;
     private const int RightDirection = 1;
     private const int LeftDirection = -1;
     private const int MiddleDirection = 0;
@@ -15,6 +16,7 @@ public class KeyPressHandler : MonoBehaviour
     [SerializeField] private IntEvent _pressedHorizontalAxis;
     [SerializeField] private UnityEvent _pressedSpace;
     [SerializeField] private UnityEvent _pressedAttack;
+    [SerializeField] private UnityEvent _pressedAbility;
 
     private int _direction = 0;
     private float _currentHorizontalValue = 0f;    
@@ -42,5 +44,7 @@ public class KeyPressHandler : MonoBehaviour
             _pressedSpace.Invoke();
         else if (Input.GetKeyDown(AttackCode))
             _pressedAttack.Invoke();
+        else if (Input.GetKeyDown(AbilityCode))
+            _pressedAbility.Invoke();
     }
 }
