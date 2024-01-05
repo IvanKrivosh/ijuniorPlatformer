@@ -7,6 +7,7 @@ public class Ability: MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private float _rechargeTime;
     [SerializeField] private float _distance;
+    [SerializeField] private ParticleSystem _effect;
 
     public float Duration => _duration;
     public float RechargeTime => _rechargeTime;
@@ -14,6 +15,12 @@ public class Ability: MonoBehaviour
     public States State { get; private set; }
     public Enemy Enemy { get; private set; }
     public Player Player { get; private set; }
+
+    private void Start()
+    {
+        if (_effect != null)
+            _effect.Stop();
+    }
 
     public void Init(Player player)
     {
@@ -44,5 +51,10 @@ public class Ability: MonoBehaviour
 
         if (time.HasValue)
             Invoke(nameof(SetNextState), time.Value);
+
+        if (State == States.Active && _effect != null)
+            _effect.Play();
+        else if (State == States.Disabled && _effect != null)            
+            _effect.Stop();
     }
 }

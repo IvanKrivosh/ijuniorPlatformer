@@ -4,13 +4,13 @@ using UnityEngine;
 public class HealthThief: Ability
 {          
     [SerializeField] private int _healthValue;
-    [SerializeField] private float _delaySteal = 0.5f;
+    [SerializeField] private float _delaySteal = 0.5f;    
 
     private WaitForSeconds _waitSeconds;
 
     private void Awake()
     {
-        _waitSeconds = new WaitForSeconds(_delaySteal);
+        _waitSeconds = new WaitForSeconds(_delaySteal);        
     }
 
     public override void Activate(Enemy enemy)
